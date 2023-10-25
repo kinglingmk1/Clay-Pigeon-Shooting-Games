@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.34031.82
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clay Pigeon Shooting Games", "Clay Pigeon Shooting Games\Clay Pigeon Shooting Games.csproj", "{31B1B46F-3AA6-44F7-B8B9-40EED9BECC87}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{31B1B46F-3AA6-44F7-B8B9-40EED9BECC87}.Debug|x86.ActiveCfg = Debug|x86
+		{31B1B46F-3AA6-44F7-B8B9-40EED9BECC87}.Debug|x86.Build.0 = Debug|x86
+		{31B1B46F-3AA6-44F7-B8B9-40EED9BECC87}.Release|x86.ActiveCfg = Release|x86
+		{31B1B46F-3AA6-44F7-B8B9-40EED9BECC87}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9177DD0F-3C8A-4055-9C9E-9BA98789EF60}
+	EndGlobalSection
+EndGlobal

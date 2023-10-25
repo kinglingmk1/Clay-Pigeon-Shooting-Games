@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <SourceFile>C:/Users/kinglingmk1/source/repos/Clay Pigeon Shooting Games/Clay Pigeon Shooting Games/Content/soundEffect/bgm.mp3</SourceFile>
+  <SourceTime>2023-10-25T16:59:13.6539694+08:00</SourceTime>
+  <DestFile>C:/Users/kinglingmk1/source/repos/Clay Pigeon Shooting Games/Clay Pigeon Shooting Games/Content/bin/Windows/soundEffect/bgm.xnb</DestFile>
+  <DestTime>2023-10-25T17:26:18.5840498+08:00</DestTime>
+  <Importer>Mp3Importer</Importer>
+  <ImporterTime>2018-09-24T05:55:52+08:00</ImporterTime>
+  <Processor>SongProcessor</Processor>
+  <ProcessorTime>2018-09-24T05:55:52+08:00</ProcessorTime>
+  <Parameters>
+    <Key>Quality</Key>
+    <Value>Best</Value>
+  </Parameters>
+  <Dependencies />
+  <BuildAsset />
+  <BuildOutput>
+    <string>C:/Users/kinglingmk1/source/repos/Clay Pigeon Shooting Games/Clay Pigeon Shooting Games/Content/bin/Windows/soundEffect/bgm.wma</string>
+  </BuildOutput>
+</PipelineBuildEvent>

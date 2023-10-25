@@ -1,0 +1,33 @@
+C:\Users\kinglingmk1\source\repos\Clay Pigeon Shooting Games\Clay Pigeon Shooting Games\bin\Windows\x86\Debug\Content\soundEffect\bgm.wma
+C:\Users\kinglingmk1\source\repos\Clay Pigeon Shooting Games\Clay Pigeon Shooting Games\bin\Windows\x86\Debug\Content\soundEffect\bgm.xnb
+C:\Users\kinglingmk1\source\repos\Clay Pigeon Shooting Games\Clay Pigeon Shooting Games\bin\Windows\x86\Debug\Content\soundEffect\GunSound.wma
+C:\Users\kinglingmk1\source\repos\Clay Pigeon Shooting Games\Clay Pigeon Shooting Games\bin\Windows\x86\Debug\Content\soundEffect\GunSound.xnb
+C:\Users\kinglingmk1\source\repos\Clay Pigeon Shooting Games\Clay Pigeon Shooting Games\bin\Windows\x86\Debug\Content\image\FlyingPad.xnb
+C:\Users\kinglingmk1\source\repos\Clay Pigeon Shooting Games\Clay Pigeon Shooting Games\bin\Windows\x86\Debug\Content\image\GunShortMovement.xnb
+C:\Users\kinglingmk1\source\repos\Clay Pigeon Shooting Games\Clay Pigeon Shooting Games\bin\Windows\x86\Debug\Content\image\MousePoint.xnb
+C:\Users\kinglingmk1\source\repos\Clay Pigeon Shooting Games\Clay Pigeon Shooting Games\bin\Windows\x86\Debug\Content\image\WallPaper.xnb
+C:\Users\kinglingmk1\source\repos\Clay Pigeon Shooting Games\Clay Pigeon Shooting Games\bin\Windows\x86\Debug\Clay Pigeon Shooting Games.exe
+C:\Users\kinglingmk1\source\repos\Clay Pigeon Shooting Games\Clay Pigeon Shooting Games\bin\Windows\x86\Debug\Clay Pigeon Shooting Games.pdb
+C:\Users\kinglingmk1\source\repos\Clay Pigeon Shooting Games\Clay Pigeon Shooting Games\bin\Windows\x86\Debug\MonoGame.Framework.dll
+C:\Users\kinglingmk1\source\repos\Clay Pigeon Shooting Games\Clay Pigeon Shooting Games\bin\Windows\x86\Debug\SharpDX.MediaFoundation.dll
+C:\Users\kinglingmk1\source\repos\Clay Pigeon Shooting Games\Clay Pigeon Shooting Games\bin\Windows\x86\Debug\SharpDX.dll
+C:\Users\kinglingmk1\source\repos\Clay Pigeon Shooting Games\Clay Pigeon Shooting Games\bin\Windows\x86\Debug\SharpDX.XAudio2.dll
+C:\Users\kinglingmk1\source\repos\Clay Pigeon Shooting Games\Clay Pigeon Shooting Games\bin\Windows\x86\Debug\SharpDX.DXGI.dll
+C:\Users\kinglingmk1\source\repos\Clay Pigeon Shooting Games\Clay Pigeon Shooting Games\bin\Windows\x86\Debug\SharpDX.Direct3D11.dll
+C:\Users\kinglingmk1\source\repos\Clay Pigeon Shooting Games\Clay Pigeon Shooting Games\bin\Windows\x86\Debug\SharpDX.Direct2D1.dll
+C:\Users\kinglingmk1\source\repos\Clay Pigeon Shooting Games\Clay Pigeon Shooting Games\bin\Windows\x86\Debug\SharpDX.XInput.dll
+C:\Users\kinglingmk1\source\repos\Clay Pigeon Shooting Games\Clay Pigeon Shooting Games\bin\Windows\x86\Debug\MonoGame.Framework.xml
+C:\Users\kinglingmk1\source\repos\Clay Pigeon Shooting Games\Clay Pigeon Shooting Games\bin\Windows\x86\Debug\SharpDX.MediaFoundation.xml
+C:\Users\kinglingmk1\source\repos\Clay Pigeon Shooting Games\Clay Pigeon Shooting Games\bin\Windows\x86\Debug\SharpDX.xml
+C:\Users\kinglingmk1\source\repos\Clay Pigeon Shooting Games\Clay Pigeon Shooting Games\bin\Windows\x86\Debug\SharpDX.XAudio2.xml
+C:\Users\kinglingmk1\source\repos\Clay Pigeon Shooting Games\Clay Pigeon Shooting Games\bin\Windows\x86\Debug\SharpDX.DXGI.xml
+C:\Users\kinglingmk1\source\repos\Clay Pigeon Shooting Games\Clay Pigeon Shooting Games\bin\Windows\x86\Debug\SharpDX.Direct3D11.xml
+C:\Users\kinglingmk1\source\repos\Clay Pigeon Shooting Games\Clay Pigeon Shooting Games\bin\Windows\x86\Debug\SharpDX.Direct2D1.xml
+C:\Users\kinglingmk1\source\repos\Clay Pigeon Shooting Games\Clay Pigeon Shooting Games\bin\Windows\x86\Debug\SharpDX.XInput.xml
+C:\Users\kinglingmk1\source\repos\Clay Pigeon Shooting Games\Clay Pigeon Shooting Games\obj\x86\Debug\Clay Pigeon Shooting Games.csprojAssemblyReference.cache
+C:\Users\kinglingmk1\source\repos\Clay Pigeon Shooting Games\Clay Pigeon Shooting Games\obj\x86\Debug\Clay Pigeon Shooting Games.csproj.CoreCompileInputs.cache
+C:\Users\kinglingmk1\source\repos\Clay Pigeon Shooting Games\Clay Pigeon Shooting Games\obj\x86\Debug\Clay Pigeon Shooting Games.csproj.CopyComplete
+C:\Users\kinglingmk1\source\repos\Clay Pigeon Shooting Games\Clay Pigeon Shooting Games\obj\x86\Debug\Clay Pigeon Shooting Games.exe
+C:\Users\kinglingmk1\source\repos\Clay Pigeon Shooting Games\Clay Pigeon Shooting Games\obj\x86\Debug\Clay Pigeon Shooting Games.pdb
+C:\Users\kinglingmk1\source\repos\Clay Pigeon Shooting Games\Clay Pigeon Shooting Games\bin\Windows\x86\Debug\Content\image\MouseMiddlePoint.xnb
+C:\Users\kinglingmk1\source\repos\Clay Pigeon Shooting Games\Clay Pigeon Shooting Games\bin\Windows\x86\Debug\Content\image\NewFlyingPad.xnb
