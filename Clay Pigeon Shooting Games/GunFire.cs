@@ -23,12 +23,6 @@ namespace Clay_Pigeon_Shooting_Games
         SpriteEffects direction = SpriteEffects.None;
         MouseState mouseLastState = Mouse.GetState();
 
-        public bool firstPositionAndFrame = true;
-        public Vector2 firstPosition;
-        public Rectangle firstFrameRect;
-        public double timer = 0f;
-
-
         public override void Initialize()
         {
             position.X = Game.GraphicsDevice.Viewport.Width / 2;
@@ -54,12 +48,10 @@ namespace Clay_Pigeon_Shooting_Games
 
 
         public override void Update(GameTime gameTime)
-        {
-            timer += gameTime.ElapsedGameTime.TotalMilliseconds;
-
-                    // is it time to move on to the next frame?
-                    
+        {  
             MouseState mouseState = Mouse.GetState();
+            position.X = mouseState.X; //Move guns right left
+            //position.Y = mouseState.Y; //Move guns up down but I think not good
             if ((mouseState.LeftButton == ButtonState.Pressed && mouseLastState.LeftButton == ButtonState.Released) || currentFrame !=0)
             {
                     frameElapsedTime += gameTime.ElapsedGameTime.TotalMilliseconds / frameTimeStep;
@@ -83,14 +75,6 @@ namespace Clay_Pigeon_Shooting_Games
         }
         public override void Draw(GameTime gameTime)
         {
-            if (velocity.X > 0)
-            {
-                direction = SpriteEffects.None;
-            }
-            else if (velocity.X < 0)
-            {
-                direction = SpriteEffects.FlipHorizontally;
-            }
 
             spriteBatch.Begin();
             
