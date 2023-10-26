@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using System;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
@@ -20,8 +21,15 @@ namespace Clay_Pigeon_Shooting_Games
         List<SoundEffect> GunSound;
         MouseState mouseLastState = Mouse.GetState();
         FlyingPad[] FlyingPads;
+        FlyingPad FP;
         GunFire GFire;
-
+        SpriteFont font;
+        public static Random F = new Random();
+        public int score = 0;
+        public int miss = 0;
+        public int misslimit = 10;
+        public int stage = 1;
+        public int padNumner = 3;
 
         public Game1()
         {
@@ -40,14 +48,18 @@ namespace Clay_Pigeon_Shooting_Games
         {
             // TODO: Add your initialization logic here
 
-            FlyingPads = new FlyingPad[4]; //Flying Pads numbers 飛碟數量
-            for (int i = 0; i < 4; i++)
+            FlyingPads = new FlyingPad[padNumner + stage]; //Flying Pads numbers 飛碟數量
+            for (int i = 0; i < FlyingPads.Length; i++)
             {
                 FlyingPads[i] = new FlyingPad(this);
                 Components.Add(FlyingPads[i]);
             }
             GFire = new GunFire(this); //Gun's animation and Crosshairs 槍支動畫及準星
             Components.Add(GFire);
+
+            FP = new FlyingPad(this);
+            Components.Add(FP);
+
             base.Initialize();
         }
 
@@ -60,6 +72,7 @@ namespace Clay_Pigeon_Shooting_Games
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
             // TODO: use this.Content to load your game content here
+            font = Content.Load<SpriteFont>("font\\MyFont");
             gameBackground = Content.Load<Texture2D>("image\\WallPaper");
             GunSound.Add(Content.Load<SoundEffect>("soundEffect\\GunSound"));
             bgm = Content.Load<Song>("soundEffect\\bgm");
@@ -91,9 +104,39 @@ namespace Clay_Pigeon_Shooting_Games
                 if(GFire.currentFrame == 0) //Limit Gun short 限制瘋狂射擊
                 {
                     GunSound[0].CreateInstance().Play(); //Gun Sound Play 播放槍聲
+                    //if collision score = 1 * stage + scores
                 }
             }
             mouseLastState = mouseState; //Record the last statement of mouse 記錄最後滑鼠狀態
+
+            if(Keyboard.GetState().IsKeyDown(Keys.R) && (miss >= misslimit || stage>3)) //Press R reset game
+            {
+                miss = 0;
+                padNumner = 3;
+                stage = 1;
+                FP.score = 0;
+            }
+            
+            for (int i=0; i< FlyingPads.Length; i++)
+            {
+                if (FlyingPads[i].position.X > 1000) //Out of range then count to miss
+                {
+                    miss++;
+                    FlyingPads[i].Initialize();
+                }
+                if (FlyingPads[i].fCollision == true)
+                {
+                    if (GFire.currentFrame == 0) //Limit Gun short 限制瘋狂射擊
+                    {
+                        score ++;
+                        FlyingPads[i].fCollision = false;
+                        FlyingPads[i].score = 0;
+                        FlyingPads[i].Initialize();
+                    }
+                    
+                }
+            }
+            
             base.Update(gameTime);
         }
 
@@ -107,7 +150,30 @@ namespace Clay_Pigeon_Shooting_Games
             GraphicsDevice.Clear(Color.CornflowerBlue);
             // TODO: Add your drawing code here
             spriteBatch.Begin();
+
             spriteBatch.Draw(gameBackground, Vector2.Zero, Color.White); //Generate background 背景生產
+            spriteBatch.DrawString(font, "Miss: " + miss + "/" + misslimit, new Vector2(20, GraphicsDevice.Viewport.Height - 50), Color.White);
+            spriteBatch.DrawString(font, "Stage: " + stage + "/3", new Vector2(20, GraphicsDevice.Viewport.Height - 70), Color.White);
+            spriteBatch.DrawString(font, "Score: " + score, new Vector2(20, GraphicsDevice.Viewport.Height - 30), Color.White);
+
+            if (miss >= misslimit)
+            {
+                spriteBatch.DrawString(font, "Game Over Press R to replay", new Vector2(GraphicsDevice.Viewport.Width / 2, GraphicsDevice.Viewport.Height /2), Color.Black);
+                for(int i=0; i<FlyingPads.Length;i++)
+                {
+                    miss = 10;
+                    FlyingPads[i].position.X = -100;
+                }
+            }
+            if (stage > 3)
+            {
+                spriteBatch.DrawString(font, "You win. Press R to Play Again", new Vector2(GraphicsDevice.Viewport.Width / 2, GraphicsDevice.Viewport.Height / 2), Color.Black);
+                for (int i = 0; i < FlyingPads.Length; i++)
+                {
+                    FlyingPads[i].position.X = -100;
+                }
+            }
+
             spriteBatch.End();
             base.Draw(gameTime);
         }
