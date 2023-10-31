@@ -34,7 +34,6 @@ namespace Clay_Pigeon_Shooting_Games
             velocity.Y = 0;
             rotateSpeed = 0;
             rotateAngle = 0;
-            
             base.Initialize();
         }
 
@@ -63,7 +62,6 @@ namespace Clay_Pigeon_Shooting_Games
             targetPosition.Y = mouseState.Y - (mousePoint.Height / 2);
             targetMiddlllePosition.X = mouseState.X - (mouseMiddlePoint.Width / 2);
             targetMiddlllePosition.Y = mouseState.Y - (mouseMiddlePoint.Height / 2);
-
             flyingPadsRectangle = new Rectangle((int)position.X - 50, (int)position.Y -50, texture.Width, texture.Height);
             mouseMiddleRectangle = new Rectangle((int)targetMiddlllePosition.X, (int)targetMiddlllePosition.Y, mouseMiddlePoint.Width, mouseMiddlePoint.Height);
 
@@ -86,9 +84,7 @@ namespace Clay_Pigeon_Shooting_Games
         public override void Draw(GameTime gameTime)
         {
             spriteBatch.Begin();
-
             spriteBatch.Draw(texture, position, null, Color.White, rotateAngle, center, 1.0f, SpriteEffects.None, 0.5f);
-
             spriteBatch.Draw(texture, flyingPadsRectangle, Color.White);
             spriteBatch.Draw(mouseMiddlePoint, mouseMiddleRectangle, Color.White);
             spriteBatch.Draw(mousePoint, targetPosition, Color.White); //Generate sight bead 準心生成
@@ -119,7 +115,5 @@ namespace Clay_Pigeon_Shooting_Games
             }
             return false; // No intersection found
         }
-
-
     }
 }
