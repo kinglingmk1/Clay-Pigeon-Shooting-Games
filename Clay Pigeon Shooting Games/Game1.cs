@@ -29,7 +29,8 @@ namespace Clay_Pigeon_Shooting_Games
         public int miss = 0;
         public int misslimit = 10;
         public int stage = 1;
-        public int padNumner = 3;
+        public int padNumner = 1;
+        public int scoreMax = 10;
 
         public Game1()
         {
@@ -115,6 +116,8 @@ namespace Clay_Pigeon_Shooting_Games
                 padNumner = 3;
                 stage = 1;
                 FP.score = 0;
+                scoreMax = 10;
+                score = 0;
             }
             
             for (int i=0; i< FlyingPads.Length; i++)
@@ -136,7 +139,46 @@ namespace Clay_Pigeon_Shooting_Games
                     
                 }
             }
-            
+            if (score == scoreMax && stage == 3)
+            {
+                miss = 0;
+                score = 0;
+                stage++;
+                FlyingPads = new FlyingPad[padNumner + stage]; //Flying Pads numbers 飛碟數量
+                for (int i = 0; i < FlyingPads.Length; i++)
+                {
+                    FlyingPads[i] = new FlyingPad(this);
+                    Components.Add(FlyingPads[i]);
+                }
+            }
+            if (score== scoreMax && stage == 2)
+            {
+                miss = 0;
+                score = 0;
+                scoreMax = 30;
+                stage++;
+                FlyingPads = new FlyingPad[padNumner + stage]; //Flying Pads numbers 飛碟數量
+                for (int i = 0; i < FlyingPads.Length; i++)
+                {
+                    FlyingPads[i] = new FlyingPad(this);
+                    Components.Add(FlyingPads[i]);
+                }
+            }
+            if (score == scoreMax && stage == 1)
+            {
+                miss = 0;
+                score = 0;
+                scoreMax = 20;
+                stage++;
+                FlyingPads = new FlyingPad[padNumner + stage]; //Flying Pads numbers 飛碟數量
+                for (int i = 0; i < FlyingPads.Length; i++)
+                {
+                    FlyingPads[i] = new FlyingPad(this);
+                    Components.Add(FlyingPads[i]);
+                }
+            }
+
+
             base.Update(gameTime);
         }
 
@@ -153,26 +195,38 @@ namespace Clay_Pigeon_Shooting_Games
 
             spriteBatch.Draw(gameBackground, Vector2.Zero, Color.White); //Generate background 背景生產
             spriteBatch.DrawString(font, "Miss: " + miss + "/" + misslimit, new Vector2(20, GraphicsDevice.Viewport.Height - 50), Color.White);
-            spriteBatch.DrawString(font, "Stage: " + stage + "/3", new Vector2(20, GraphicsDevice.Viewport.Height - 70), Color.White);
-            spriteBatch.DrawString(font, "Score: " + score, new Vector2(20, GraphicsDevice.Viewport.Height - 30), Color.White);
+
+            if(stage<=3)
+            {
+                spriteBatch.DrawString(font, "Stage: " + stage + "/3", new Vector2(20, GraphicsDevice.Viewport.Height - 70), Color.White);
+            } else
+            {
+                spriteBatch.DrawString(font, "Stage: 3/3", new Vector2(20, GraphicsDevice.Viewport.Height - 70), Color.White);
+            }
+
+            spriteBatch.DrawString(font, "Score: " + score +"/" + scoreMax, new Vector2(20, GraphicsDevice.Viewport.Height - 30), Color.White);
 
             if (miss >= misslimit)
             {
-                spriteBatch.DrawString(font, "Game Over Press R to replay", new Vector2(GraphicsDevice.Viewport.Width / 2, GraphicsDevice.Viewport.Height /2), Color.Black);
+                spriteBatch.DrawString(font, "Game Over Press R to replay or ESC to Exit", new Vector2(GraphicsDevice.Viewport.Width / 2, GraphicsDevice.Viewport.Height /2), Color.Black);
                 for(int i=0; i<FlyingPads.Length;i++)
                 {
                     miss = 10;
                     FlyingPads[i].position.X = -100;
                 }
             }
-            if (stage > 3)
+
+            if (stage > 3 || score >= 30)
             {
-                spriteBatch.DrawString(font, "You win. Press R to Play Again", new Vector2(GraphicsDevice.Viewport.Width / 2, GraphicsDevice.Viewport.Height / 2), Color.Black);
+
+                spriteBatch.DrawString(font, "You win. Press R to Play Again or ESC to Exit", new Vector2(GraphicsDevice.Viewport.Width / 2, GraphicsDevice.Viewport.Height / 2), Color.Black);
                 for (int i = 0; i < FlyingPads.Length; i++)
                 {
                     FlyingPads[i].position.X = -100;
                 }
             }
+
+
 
             spriteBatch.End();
             base.Draw(gameTime);
