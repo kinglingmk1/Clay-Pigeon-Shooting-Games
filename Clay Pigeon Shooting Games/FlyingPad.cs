@@ -2,6 +2,8 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Audio;
+using System.Collections.Generic;
 
 namespace Clay_Pigeon_Shooting_Games
 {
@@ -22,6 +24,7 @@ namespace Clay_Pigeon_Shooting_Games
         public Rectangle flyingPadsRectangle, mouseMiddleRectangle;
         public bool fCollision = false;
         SpriteFont font;
+        List<SoundEffect> PadShooted = new List<SoundEffect>();
 
         public override void Initialize()
         {
@@ -31,6 +34,7 @@ namespace Clay_Pigeon_Shooting_Games
             velocity.Y = 0;
             rotateSpeed = 0;
             rotateAngle = 0;
+            
             base.Initialize();
         }
 
@@ -41,6 +45,7 @@ namespace Clay_Pigeon_Shooting_Games
             mousePoint = Game.Content.Load<Texture2D>("image\\MousePoint");
             mouseMiddlePoint = Game.Content.Load<Texture2D>("image\\MouseMiddlePoint");
             font = Game.Content.Load<SpriteFont>("font\\MyFont");
+            PadShooted.Add(Game.Content.Load<SoundEffect>("soundEffect\\PadDestroySound"));
             center.X = texture.Width / 2.0f;
             center.Y = texture.Height / 2.0f;
             data = new Color[texture.Width * texture.Height];
@@ -67,6 +72,11 @@ namespace Clay_Pigeon_Shooting_Games
                 if(IntersectPixels(flyingPadsRectangle, data, mouseMiddleRectangle, middleData))
                 {
                     fCollision = true;
+                    PadShooted[0].CreateInstance().Play();
+                    position.X = 0;
+                    position.Y = r.Next(GraphicsDevice.Viewport.Height);
+                    velocity.X = r.Next(40, 80) / 10;
+                    score++;
                 }
             }
             mouseLastState = mouseState; //Record the last statement of mouse 記錄最後滑鼠狀態
@@ -79,12 +89,10 @@ namespace Clay_Pigeon_Shooting_Games
 
             spriteBatch.Draw(texture, position, null, Color.White, rotateAngle, center, 1.0f, SpriteEffects.None, 0.5f);
 
-            spriteBatch.Draw(mousePoint, targetPosition, Color.White); //Generate sight bead 準心生成
-            spriteBatch.Draw(mouseMiddlePoint, targetPosition, Color.White); //Generate sight bead 準心生成
-
             spriteBatch.Draw(texture, flyingPadsRectangle, Color.White);
             spriteBatch.Draw(mouseMiddlePoint, mouseMiddleRectangle, Color.White);
-
+            spriteBatch.Draw(mousePoint, targetPosition, Color.White); //Generate sight bead 準心生成
+            spriteBatch.Draw(mouseMiddlePoint, targetPosition, Color.White); //Generate sight bead 準心生成
             //spriteBatch.DrawString(font, "Score: " + score, new Vector2(20, GraphicsDevice.Viewport.Height - 30), Color.White);
 
             spriteBatch.End();

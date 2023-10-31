@@ -13,8 +13,10 @@
     <File>C:/Users/kinglingmk1/source/repos/Clay Pigeon Shooting Games/Clay Pigeon Shooting Games/Content/image/WallPaper.png</File>
     <File>C:/Users/kinglingmk1/source/repos/Clay Pigeon Shooting Games/Clay Pigeon Shooting Games/Content/soundEffect/bgm.mp3</File>
     <File>C:/Users/kinglingmk1/source/repos/Clay Pigeon Shooting Games/Clay Pigeon Shooting Games/Content/soundEffect/GunSound.mp3</File>
+    <File>C:/Users/kinglingmk1/source/repos/Clay Pigeon Shooting Games/Clay Pigeon Shooting Games/Content/soundEffect/PadDestroySound.mp3</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

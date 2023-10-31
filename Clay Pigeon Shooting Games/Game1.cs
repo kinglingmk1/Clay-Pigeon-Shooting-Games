@@ -29,7 +29,7 @@ namespace Clay_Pigeon_Shooting_Games
         public int miss = 0;
         public int misslimit = 10;
         public int stage = 1;
-        public int padNumner = 1;
+        public int padNumner = 2;
         public int scoreMax = 10;
 
         public Game1()
@@ -96,21 +96,12 @@ namespace Clay_Pigeon_Shooting_Games
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
+            
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
             // TODO: Add your update logic here
-            MouseState mouseState = Mouse.GetState();
-            if (mouseState.LeftButton == ButtonState.Pressed && mouseLastState.LeftButton == ButtonState.Released) // Left Click 當按下左鍵并且當前上一階段左鍵是放開
-            {
-                if(GFire.currentFrame == 0) //Limit Gun short 限制瘋狂射擊
-                {
-                    GunSound[0].CreateInstance().Play(); //Gun Sound Play 播放槍聲
-                    //if collision score = 1 * stage + scores
-                }
-            }
-            mouseLastState = mouseState; //Record the last statement of mouse 記錄最後滑鼠狀態
 
-            if(Keyboard.GetState().IsKeyDown(Keys.R) && (miss >= misslimit || stage>3)) //Press R reset game
+            if (Keyboard.GetState().IsKeyDown(Keys.R) && (miss >= misslimit || score>=30)) //Press R reset game
             {
                 miss = 0;
                 padNumner = 3;
@@ -119,7 +110,19 @@ namespace Clay_Pigeon_Shooting_Games
                 scoreMax = 10;
                 score = 0;
             }
-            
+
+            MouseState mouseState = Mouse.GetState();
+            if (mouseState.LeftButton == ButtonState.Pressed && mouseLastState.LeftButton == ButtonState.Released) // Left Click 當按下左鍵并且當前上一階段左鍵是放開
+            {
+                GFire.currentFrame = 0;
+                if (GFire.currentFrame == 0) //Limit Gun short 限制瘋狂射擊
+                {
+                    GunSound[0].CreateInstance().Play(); //Gun Sound Play 播放槍聲
+                    //if collision score = 1 * stage + scores
+                }
+            }
+            mouseLastState = mouseState; //Record the last statement of mouse 記錄最後滑鼠狀態
+
             for (int i=0; i< FlyingPads.Length; i++)
             {
                 if (FlyingPads[i].position.X > 1000) //Out of range then count to miss
@@ -129,9 +132,10 @@ namespace Clay_Pigeon_Shooting_Games
                 }
                 if (FlyingPads[i].fCollision == true)
                 {
+
                     if (GFire.currentFrame == 0) //Limit Gun short 限制瘋狂射擊
                     {
-                        score ++;
+                        score++;
                         FlyingPads[i].fCollision = false;
                         FlyingPads[i].score = 0;
                         FlyingPads[i].Initialize();
@@ -141,8 +145,7 @@ namespace Clay_Pigeon_Shooting_Games
             }
             if (score == scoreMax && stage == 3)
             {
-                miss = 0;
-                score = 0;
+                score = 30;
                 stage++;
                 FlyingPads = new FlyingPad[padNumner + stage]; //Flying Pads numbers 飛碟數量
                 for (int i = 0; i < FlyingPads.Length; i++)

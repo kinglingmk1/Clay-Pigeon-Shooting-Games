@@ -32,3 +32,5 @@ C:\Users\kinglingmk1\source\repos\Clay Pigeon Shooting Games\Clay Pigeon Shootin
 C:\Users\kinglingmk1\source\repos\Clay Pigeon Shooting Games\Clay Pigeon Shooting Games\bin\Windows\x86\Debug\Content\image\MouseMiddlePoint.xnb
 C:\Users\kinglingmk1\source\repos\Clay Pigeon Shooting Games\Clay Pigeon Shooting Games\bin\Windows\x86\Debug\Content\image\NewFlyingPad.xnb
 C:\Users\kinglingmk1\source\repos\Clay Pigeon Shooting Games\Clay Pigeon Shooting Games\bin\Windows\x86\Debug\Content\font\MyFont.xnb
+C:\Users\kinglingmk1\source\repos\Clay Pigeon Shooting Games\Clay Pigeon Shooting Games\bin\Windows\x86\Debug\Content\soundEffect\PadDestroySound.wma
+C:\Users\kinglingmk1\source\repos\Clay Pigeon Shooting Games\Clay Pigeon Shooting Games\bin\Windows\x86\Debug\Content\soundEffect\PadDestroySound.xnb
