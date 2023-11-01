@@ -227,7 +227,7 @@ namespace Clay_Pigeon_Shooting_Games
 
             if (stage > 3 || score >= 30)
             {
-
+                score = 30;
                 spriteBatch.DrawString(font, "You win. Press R to Play Again or ESC to Exit", new Vector2(GraphicsDevice.Viewport.Width / 2, GraphicsDevice.Viewport.Height / 2), Color.Black);
                 for (int i = 0; i < FlyingPads.Length; i++)
                 {
