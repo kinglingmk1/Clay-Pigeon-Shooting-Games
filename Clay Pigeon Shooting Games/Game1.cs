@@ -29,7 +29,7 @@ namespace Clay_Pigeon_Shooting_Games
         public int miss = 0;
         public int misslimit = 10;
         public int stage = 1;
-        public int padNumner = 2;
+        public int padNumner = 1;
         public int scoreMax = 10;
 
         public Game1()
@@ -49,7 +49,7 @@ namespace Clay_Pigeon_Shooting_Games
         {
             // TODO: Add your initialization logic here
 
-            FlyingPads = new FlyingPad[padNumner + stage]; //Flying Pads numbers 飛碟數量
+            FlyingPads = new FlyingPad[padNumner]; //Flying Pads numbers 飛碟數量
             for (int i = 0; i < FlyingPads.Length; i++)
             {
                 FlyingPads[i] = new FlyingPad(this);
@@ -109,6 +109,7 @@ namespace Clay_Pigeon_Shooting_Games
                 FP.score = 0;
                 scoreMax = 10;
                 score = 0;
+                misslimit = 10;
             }
 
             MouseState mouseState = Mouse.GetState();
@@ -132,18 +133,22 @@ namespace Clay_Pigeon_Shooting_Games
                 }
                 if (FlyingPads[i].fCollision == true)
                 {
-
+                    
                     if (GFire.currentFrame == 0) //Limit Gun short 限制瘋狂射擊
                     {
-                        score++;
+
+                        if (miss < 10)
+                        {
+                            score++;
+                        }
                         FlyingPads[i].fCollision = false;
                         FlyingPads[i].score = 0;
-                        FlyingPads[i].Initialize();
+                        //FlyingPads[i].Initialize();
                     }
                     
                 }
             }
-            if (score == scoreMax && stage == 3)
+            if (score >= scoreMax && stage == 3)
             {
                 score = 30;
                 stage++;
@@ -154,11 +159,12 @@ namespace Clay_Pigeon_Shooting_Games
                     Components.Add(FlyingPads[i]);
                 }
             }
-            if (score== scoreMax && stage == 2)
+            if (score>= scoreMax && stage == 2)
             {
                 miss = 0;
                 score = 0;
                 scoreMax = 30;
+                misslimit = 15;
                 stage++;
                 FlyingPads = new FlyingPad[padNumner + stage]; //Flying Pads numbers 飛碟數量
                 for (int i = 0; i < FlyingPads.Length; i++)
@@ -167,7 +173,7 @@ namespace Clay_Pigeon_Shooting_Games
                     Components.Add(FlyingPads[i]);
                 }
             }
-            if (score == scoreMax && stage == 1)
+            if (score >= scoreMax && stage == 1)
             {
                 miss = 0;
                 score = 0;
