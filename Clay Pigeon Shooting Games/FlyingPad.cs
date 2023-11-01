@@ -31,7 +31,7 @@ namespace Clay_Pigeon_Shooting_Games
             position.X = 0;
             position.Y = r.Next(GraphicsDevice.Viewport.Height);
             velocity.X = r.Next(40, 80) / 10;
-            velocity.Y = 0;
+            velocity.Y = r.Next(1, 20) / 10;
             rotateSpeed = 0;
             rotateAngle = 0;
             base.Initialize();
@@ -57,6 +57,7 @@ namespace Clay_Pigeon_Shooting_Games
         {
             // TODO: Add your update logic here
             position.X += velocity.X;
+            position.Y += velocity.Y;
             MouseState mouseState = Mouse.GetState();
             targetPosition.X = mouseState.X - (mousePoint.Width / 2);
             targetPosition.Y = mouseState.Y - (mousePoint.Height / 2);
@@ -69,10 +70,10 @@ namespace Clay_Pigeon_Shooting_Games
             {
                 if(IntersectPixels(flyingPadsRectangle, data, mouseMiddleRectangle, middleData))
                 {
+
                     fCollision = true;
                     PadShooted[0].CreateInstance().Play();
                     position.X = 0;
-                    position.Y = r.Next(GraphicsDevice.Viewport.Height);
                     velocity.X = r.Next(40, 80) / 10;
                     score++;
                 }

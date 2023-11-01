@@ -46,7 +46,7 @@ namespace Clay_Pigeon_Shooting_Games
             MouseState mouseState = Mouse.GetState();
             position.X = mouseState.X; //Move guns right left
             //position.Y = mouseState.Y; //Move guns up down but I think not good
-            if ((mouseState.LeftButton == ButtonState.Pressed && mouseLastState.LeftButton == ButtonState.Released) || currentFrame !=0)
+            if ((mouseState.LeftButton == ButtonState.Pressed && mouseLastState.LeftButton == ButtonState.Released) || currentFrame != 0)
             {
                     frameElapsedTime += gameTime.ElapsedGameTime.TotalMilliseconds / frameTimeStep;
                     if (frameElapsedTime >= currentFrame)
