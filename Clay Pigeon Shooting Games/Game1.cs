@@ -48,7 +48,6 @@ namespace Clay_Pigeon_Shooting_Games
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-
             FlyingPads = new FlyingPad[padNumner]; //Flying Pads numbers 飛碟數量
             for (int i = 0; i < FlyingPads.Length; i++)
             {
@@ -57,10 +56,8 @@ namespace Clay_Pigeon_Shooting_Games
             }
             GFire = new GunFire(this); //Gun's animation and Crosshairs 槍支動畫及準星
             Components.Add(GFire);
-
             FP = new FlyingPad(this);
             Components.Add(FP);
-
             base.Initialize();
         }
 
@@ -96,11 +93,9 @@ namespace Clay_Pigeon_Shooting_Games
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
-            
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
             // TODO: Add your update logic here
-
             if (Keyboard.GetState().IsKeyDown(Keys.R) && (miss >= misslimit || score>=30)) //Press R reset game
             {
                 miss = 0;
@@ -111,7 +106,6 @@ namespace Clay_Pigeon_Shooting_Games
                 score = 0;
                 misslimit = 10;
             }
-
             MouseState mouseState = Mouse.GetState();
             if (mouseState.LeftButton == ButtonState.Pressed && mouseLastState.LeftButton == ButtonState.Released) // Left Click 當按下左鍵并且當前上一階段左鍵是放開
             {
@@ -123,7 +117,6 @@ namespace Clay_Pigeon_Shooting_Games
                 }
             }
             mouseLastState = mouseState; //Record the last statement of mouse 記錄最後滑鼠狀態
-
             for (int i=0; i< FlyingPads.Length; i++)
             {
                 if (FlyingPads[i].position.X > 1000) //Out of range then count to miss
@@ -133,10 +126,8 @@ namespace Clay_Pigeon_Shooting_Games
                 }
                 if (FlyingPads[i].fCollision == true)
                 {
-                    
                     if (GFire.currentFrame == 0) //Limit Gun short 限制瘋狂射擊
                     {
-
                         if (miss < 10)
                         {
                             score++;
@@ -145,7 +136,6 @@ namespace Clay_Pigeon_Shooting_Games
                         FlyingPads[i].score = 0;
                         //FlyingPads[i].Initialize();
                     }
-                    
                 }
             }
             if (score >= scoreMax && stage == 3)
@@ -186,8 +176,6 @@ namespace Clay_Pigeon_Shooting_Games
                     Components.Add(FlyingPads[i]);
                 }
             }
-
-
             base.Update(gameTime);
         }
 
@@ -201,10 +189,8 @@ namespace Clay_Pigeon_Shooting_Games
             GraphicsDevice.Clear(Color.CornflowerBlue);
             // TODO: Add your drawing code here
             spriteBatch.Begin();
-
             spriteBatch.Draw(gameBackground, Vector2.Zero, Color.White); //Generate background 背景生產
             spriteBatch.DrawString(font, "Miss: " + miss + "/" + misslimit, new Vector2(20, GraphicsDevice.Viewport.Height - 50), Color.White);
-
             if(stage<=3)
             {
                 spriteBatch.DrawString(font, "Stage: " + stage + "/3", new Vector2(20, GraphicsDevice.Viewport.Height - 70), Color.White);
@@ -212,9 +198,7 @@ namespace Clay_Pigeon_Shooting_Games
             {
                 spriteBatch.DrawString(font, "Stage: 3/3", new Vector2(20, GraphicsDevice.Viewport.Height - 70), Color.White);
             }
-
             spriteBatch.DrawString(font, "Score: " + score +"/" + scoreMax, new Vector2(20, GraphicsDevice.Viewport.Height - 30), Color.White);
-
             if (miss >= misslimit)
             {
                 spriteBatch.DrawString(font, "Game Over Press R to replay or ESC to Exit", new Vector2(GraphicsDevice.Viewport.Width / 2, GraphicsDevice.Viewport.Height /2), Color.Black);
@@ -224,7 +208,6 @@ namespace Clay_Pigeon_Shooting_Games
                     FlyingPads[i].position.X = -100;
                 }
             }
-
             if (stage > 3 || score >= 30)
             {
                 score = 30;
@@ -234,9 +217,6 @@ namespace Clay_Pigeon_Shooting_Games
                     FlyingPads[i].position.X = -100;
                 }
             }
-
-
-
             spriteBatch.End();
             base.Draw(gameTime);
         }

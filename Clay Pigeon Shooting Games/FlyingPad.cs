@@ -54,13 +54,10 @@ namespace Clay_Pigeon_Shooting_Games
             PadShooted.Add(Game.Content.Load<SoundEffect>("soundEffect\\PadDestroySound"));
             center.X = FlyingPads.Width / 2.0f;
             center.Y = FlyingPads.Height / 2.0f;
-
             FlyingPadsData = new Color[FlyingPads.Width * FlyingPads.Height];
             FlyingPads.GetData<Color>(FlyingPadsData);
-
             FlyingPads2Data = new Color[FlyingPads2.Width * FlyingPads2.Height];
             FlyingPads2.GetData<Color>(FlyingPads2Data);
-
             middleData = new Color[mouseMiddlePoint.Width * mouseMiddlePoint.Height];
             mouseMiddlePoint.GetData<Color>(middleData);
         }
@@ -77,11 +74,9 @@ namespace Clay_Pigeon_Shooting_Games
             targetPosition.Y = mouseState.Y - (mousePoint.Height / 2);
             targetMiddlllePosition.X = mouseState.X - (mouseMiddlePoint.Width / 2);
             targetMiddlllePosition.Y = mouseState.Y - (mouseMiddlePoint.Height / 2);
-
             flyingPadsRectangle = new Rectangle((int)position.X - 50, (int)position.Y -50, FlyingPads.Width, FlyingPads.Height);
             flyingPads2Rectangle = new Rectangle((int)position2.X - 50, (int)position2.Y - 50, FlyingPads2.Width, FlyingPads2.Height);
             mouseMiddleRectangle = new Rectangle((int)targetMiddlllePosition.X, (int)targetMiddlllePosition.Y, mouseMiddlePoint.Width, mouseMiddlePoint.Height);
-
             if (mouseState.LeftButton == ButtonState.Pressed && mouseLastState.LeftButton == ButtonState.Released) // Left Click 當按下左鍵并且當前上一階段左鍵是放開
             {
                 if(IntersectPixels(flyingPadsRectangle, FlyingPadsData, mouseMiddleRectangle, middleData))
@@ -119,7 +114,6 @@ namespace Clay_Pigeon_Shooting_Games
             spriteBatch.Draw(mousePoint, targetPosition, Color.White); //Generate sight bead 準心生成
             spriteBatch.Draw(mouseMiddlePoint, targetPosition, Color.White); //Generate sight bead 準心生成
             //spriteBatch.DrawString(font, "Score: " + score, new Vector2(20, GraphicsDevice.Viewport.Height - 30), Color.White);
-
             spriteBatch.End();
             base.Draw(gameTime);
         }
