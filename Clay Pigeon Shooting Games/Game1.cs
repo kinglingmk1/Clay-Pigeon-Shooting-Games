@@ -15,8 +15,9 @@ namespace Clay_Pigeon_Shooting_Games
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
-        Texture2D gameBackground;
+        Texture2D gameBackground ,bulletHole;
         public Vector2 position, center, velocity;
+        public Vector2[] BulletHolePosition;
         Song bgm;
         List<SoundEffect> GunSound, round1,round2,finalRound, victory, lose;
         MouseState mouseLastState = Mouse.GetState();
@@ -32,6 +33,8 @@ namespace Clay_Pigeon_Shooting_Games
         public int padNumner = 1;
         public int scoreMax = 10;
         public bool playonce = true;
+        public int bulletHoleCount = 0;
+        public int MaxBulletHole = 1000;
 
         public Game1()
         {
@@ -43,6 +46,7 @@ namespace Clay_Pigeon_Shooting_Games
             finalRound = new List<SoundEffect>();
             victory = new List<SoundEffect>();
             lose = new List<SoundEffect>();
+            BulletHolePosition = new Vector2[MaxBulletHole];
         }
 
         /// <summary>
@@ -78,8 +82,8 @@ namespace Clay_Pigeon_Shooting_Games
             // TODO: use this.Content to load your game content here
             font = Content.Load<SpriteFont>("font\\MyFont");
             gameBackground = Content.Load<Texture2D>("image\\WallPaper");
-            GunSound.Add(Content.Load<SoundEffect>("soundEffect\\GunSound"));
-            
+            bulletHole = Content.Load<Texture2D>("image\\BulletHole");
+            GunSound.Add(Content.Load<SoundEffect>("soundEffect\\GunSound"));            
             bgm = Content.Load<Song>("soundEffect\\bgm");
             MediaPlayer.Play(bgm); //Play bgm 播放背景音樂
             round1.Add(Content.Load<SoundEffect>("soundEffect\\Round1"));
@@ -111,6 +115,7 @@ namespace Clay_Pigeon_Shooting_Games
             // TODO: Add your update logic here
             if (Keyboard.GetState().IsKeyDown(Keys.R) && (miss >= misslimit || score>=30)) //Press R reset game
             {
+                BulletHolePosition = new Vector2[MaxBulletHole];
                 playonce = true;
                 round1[0].CreateInstance().Play();
                 miss = 0;
@@ -127,6 +132,13 @@ namespace Clay_Pigeon_Shooting_Games
                 GFire.currentFrame = 0;
                 if (GFire.currentFrame == 0) //Limit Gun short 限制瘋狂射擊
                 {
+                    BulletHolePosition[bulletHoleCount].X = mouseState.Position.X - bulletHole.Width / 2;
+                    BulletHolePosition[bulletHoleCount].Y = mouseState.Position.Y - bulletHole.Height / 2;
+                    bulletHoleCount++;
+                    if (bulletHoleCount >= MaxBulletHole)
+                    {
+                        bulletHoleCount = 0;
+                    }
                     GunSound[0].CreateInstance().Play(); //Gun Sound Play 播放槍聲
                     //if collision score = 1 * stage + scores
                 }
@@ -215,6 +227,11 @@ namespace Clay_Pigeon_Shooting_Games
             // TODO: Add your drawing code here
             spriteBatch.Begin();
             spriteBatch.Draw(gameBackground, Vector2.Zero, Color.White); //Generate background 背景生產
+            for(int i=0; i< MaxBulletHole; i++)
+            {
+                spriteBatch.Draw(bulletHole, BulletHolePosition[i], Color.White);
+            }
+            
             spriteBatch.DrawString(font, "Miss: " + miss + "/" + misslimit, new Vector2(20, GraphicsDevice.Viewport.Height - 50), Color.White);
             if(stage<=3)
             {
