@@ -5,6 +5,7 @@
   <Config />
   <SourceFiles>
     <File>C:/Users/kinglingmk1/source/repos/Clay Pigeon Shooting Games/Clay Pigeon Shooting Games/Content/font/MyFont.spritefont</File>
+    <File>C:/Users/kinglingmk1/source/repos/Clay Pigeon Shooting Games/Clay Pigeon Shooting Games/Content/image/BulletHole.png</File>
     <File>C:/Users/kinglingmk1/source/repos/Clay Pigeon Shooting Games/Clay Pigeon Shooting Games/Content/image/FlyingPad.png</File>
     <File>C:/Users/kinglingmk1/source/repos/Clay Pigeon Shooting Games/Clay Pigeon Shooting Games/Content/image/GunShortMovement.png</File>
     <File>C:/Users/kinglingmk1/source/repos/Clay Pigeon Shooting Games/Clay Pigeon Shooting Games/Content/image/MouseMiddlePoint.png</File>
@@ -22,6 +23,7 @@
     <File>C:/Users/kinglingmk1/source/repos/Clay Pigeon Shooting Games/Clay Pigeon Shooting Games/Content/soundEffect/Victory.mp3</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
