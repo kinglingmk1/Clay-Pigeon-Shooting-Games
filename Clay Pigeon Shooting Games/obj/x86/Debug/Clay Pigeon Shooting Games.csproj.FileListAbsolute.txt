@@ -24,7 +24,6 @@ C:\Users\kinglingmk1\source\repos\Clay Pigeon Shooting Games\Clay Pigeon Shootin
 C:\Users\kinglingmk1\source\repos\Clay Pigeon Shooting Games\Clay Pigeon Shooting Games\bin\Windows\x86\Debug\SharpDX.Direct3D11.xml
 C:\Users\kinglingmk1\source\repos\Clay Pigeon Shooting Games\Clay Pigeon Shooting Games\bin\Windows\x86\Debug\SharpDX.Direct2D1.xml
 C:\Users\kinglingmk1\source\repos\Clay Pigeon Shooting Games\Clay Pigeon Shooting Games\bin\Windows\x86\Debug\SharpDX.XInput.xml
-C:\Users\kinglingmk1\source\repos\Clay Pigeon Shooting Games\Clay Pigeon Shooting Games\obj\x86\Debug\Clay Pigeon Shooting Games.csprojAssemblyReference.cache
 C:\Users\kinglingmk1\source\repos\Clay Pigeon Shooting Games\Clay Pigeon Shooting Games\obj\x86\Debug\Clay Pigeon Shooting Games.csproj.CoreCompileInputs.cache
 C:\Users\kinglingmk1\source\repos\Clay Pigeon Shooting Games\Clay Pigeon Shooting Games\obj\x86\Debug\Clay Pigeon Shooting Games.csproj.CopyComplete
 C:\Users\kinglingmk1\source\repos\Clay Pigeon Shooting Games\Clay Pigeon Shooting Games\obj\x86\Debug\Clay Pigeon Shooting Games.exe
@@ -48,3 +47,4 @@ C:\Users\kinglingmk1\source\repos\Clay Pigeon Shooting Games\Clay Pigeon Shootin
 C:\Users\kinglingmk1\source\repos\Clay Pigeon Shooting Games\Clay Pigeon Shooting Games\obj\x86\Debug\Clay Pigeon Shooting Games.exe.manifest
 C:\Users\kinglingmk1\source\repos\Clay Pigeon Shooting Games\Clay Pigeon Shooting Games\obj\x86\Debug\Clay Pigeon Shooting Games.application
 C:\Users\kinglingmk1\source\repos\Clay Pigeon Shooting Games\Clay Pigeon Shooting Games\bin\Windows\x86\Debug\Content\image\BulletHole.xnb
+C:\Users\kinglingmk1\source\repos\Clay Pigeon Shooting Games\Clay Pigeon Shooting Games\obj\x86\Debug\Clay Pigeon Shooting Games.csproj.AssemblyReference.cache
