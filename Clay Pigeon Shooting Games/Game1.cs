@@ -18,7 +18,7 @@ namespace Clay_Pigeon_Shooting_Games
         Texture2D gameBackground;
         public Vector2 position, center, velocity;
         Song bgm;
-        List<SoundEffect> GunSound;
+        List<SoundEffect> GunSound, round1,round2,finalRound, victory, lose;
         MouseState mouseLastState = Mouse.GetState();
         FlyingPad[] FlyingPads;
         FlyingPad FP;
@@ -31,12 +31,18 @@ namespace Clay_Pigeon_Shooting_Games
         public int stage = 1;
         public int padNumner = 1;
         public int scoreMax = 10;
+        public bool playonce = true;
 
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             GunSound = new List<SoundEffect>();
+            round1 = new List<SoundEffect>();
+            round2 = new List<SoundEffect>();
+            finalRound = new List<SoundEffect>();
+            victory = new List<SoundEffect>();
+            lose = new List<SoundEffect>();
         }
 
         /// <summary>
@@ -73,8 +79,15 @@ namespace Clay_Pigeon_Shooting_Games
             font = Content.Load<SpriteFont>("font\\MyFont");
             gameBackground = Content.Load<Texture2D>("image\\WallPaper");
             GunSound.Add(Content.Load<SoundEffect>("soundEffect\\GunSound"));
+            
             bgm = Content.Load<Song>("soundEffect\\bgm");
             MediaPlayer.Play(bgm); //Play bgm 播放背景音樂
+            round1.Add(Content.Load<SoundEffect>("soundEffect\\Round1"));
+            round2.Add(Content.Load<SoundEffect>("soundEffect\\Round2"));
+            finalRound.Add(Content.Load<SoundEffect>("soundEffect\\Round3"));
+            victory.Add(Content.Load<SoundEffect>("soundEffect\\Victory"));
+            lose.Add(Content.Load<SoundEffect>("soundEffect\\Lost"));
+            round1[0].CreateInstance().Play();
         }
 
         /// <summary>
@@ -98,6 +111,8 @@ namespace Clay_Pigeon_Shooting_Games
             // TODO: Add your update logic here
             if (Keyboard.GetState().IsKeyDown(Keys.R) && (miss >= misslimit || score>=30)) //Press R reset game
             {
+                playonce = true;
+                round1[0].CreateInstance().Play();
                 miss = 0;
                 padNumner = 3;
                 stage = 1;
@@ -128,7 +143,7 @@ namespace Clay_Pigeon_Shooting_Games
                 {
                     if (GFire.currentFrame == 0) //Limit Gun short 限制瘋狂射擊
                     {
-                        if (miss < 10)
+                        if (miss < 10 || (stage == 3 && miss < 15)) 
                         {
                             score++;
                         }
@@ -140,6 +155,7 @@ namespace Clay_Pigeon_Shooting_Games
             }
             if (score >= scoreMax && stage == 3)
             {
+                victory[0].CreateInstance().Play();
                 score = 30;
                 stage++;
                 FlyingPads = new FlyingPad[padNumner + stage]; //Flying Pads numbers 飛碟數量
@@ -149,8 +165,15 @@ namespace Clay_Pigeon_Shooting_Games
                     Components.Add(FlyingPads[i]);
                 }
             }
+            if (miss >= misslimit && playonce == true)
+            {
+                playonce = false;
+                lose[0].CreateInstance().Play();
+            }
             if (score>= scoreMax && stage == 2)
             {
+                round2[0].CreateInstance().Play();
+                //MediaPlayer.Play(finalRound);
                 miss = 0;
                 score = 0;
                 scoreMax = 30;
@@ -165,6 +188,8 @@ namespace Clay_Pigeon_Shooting_Games
             }
             if (score >= scoreMax && stage == 1)
             {
+                finalRound[0].CreateInstance().Play();
+                //MediaPlayer.Play(round2);
                 miss = 0;
                 score = 0;
                 scoreMax = 20;
@@ -201,10 +226,17 @@ namespace Clay_Pigeon_Shooting_Games
             spriteBatch.DrawString(font, "Score: " + score +"/" + scoreMax, new Vector2(20, GraphicsDevice.Viewport.Height - 30), Color.White);
             if (miss >= misslimit)
             {
+                if(stage == 3)
+                {
+                    miss = 15;
+                }else
+                {
+                    miss = 10;
+                }
                 spriteBatch.DrawString(font, "Game Over Press R to replay or ESC to Exit", new Vector2(GraphicsDevice.Viewport.Width / 2, GraphicsDevice.Viewport.Height /2), Color.Black);
                 for(int i=0; i<FlyingPads.Length;i++)
                 {
-                    miss = 10;
+                    
                     FlyingPads[i].position.X = -100;
                 }
             }

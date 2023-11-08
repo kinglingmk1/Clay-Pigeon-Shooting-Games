@@ -35,3 +35,11 @@ C:\Users\kinglingmk1\source\repos\Clay Pigeon Shooting Games\Clay Pigeon Shootin
 C:\Users\kinglingmk1\source\repos\Clay Pigeon Shooting Games\Clay Pigeon Shooting Games\bin\Windows\x86\Debug\Content\soundEffect\PadDestroySound.wma
 C:\Users\kinglingmk1\source\repos\Clay Pigeon Shooting Games\Clay Pigeon Shooting Games\bin\Windows\x86\Debug\Content\soundEffect\PadDestroySound.xnb
 C:\Users\kinglingmk1\source\repos\Clay Pigeon Shooting Games\Clay Pigeon Shooting Games\bin\Windows\x86\Debug\Content\image\NewFlyingPad2.xnb
+C:\Users\kinglingmk1\source\repos\Clay Pigeon Shooting Games\Clay Pigeon Shooting Games\bin\Windows\x86\Debug\Content\soundEffect\Round1 .wma
+C:\Users\kinglingmk1\source\repos\Clay Pigeon Shooting Games\Clay Pigeon Shooting Games\bin\Windows\x86\Debug\Content\soundEffect\Round2.wma
+C:\Users\kinglingmk1\source\repos\Clay Pigeon Shooting Games\Clay Pigeon Shooting Games\bin\Windows\x86\Debug\Content\soundEffect\Round2.xnb
+C:\Users\kinglingmk1\source\repos\Clay Pigeon Shooting Games\Clay Pigeon Shooting Games\bin\Windows\x86\Debug\Content\soundEffect\Round3.wma
+C:\Users\kinglingmk1\source\repos\Clay Pigeon Shooting Games\Clay Pigeon Shooting Games\bin\Windows\x86\Debug\Content\soundEffect\Round3.xnb
+C:\Users\kinglingmk1\source\repos\Clay Pigeon Shooting Games\Clay Pigeon Shooting Games\bin\Windows\x86\Debug\Content\soundEffect\Round1.xnb
+C:\Users\kinglingmk1\source\repos\Clay Pigeon Shooting Games\Clay Pigeon Shooting Games\bin\Windows\x86\Debug\Content\soundEffect\Lost.xnb
+C:\Users\kinglingmk1\source\repos\Clay Pigeon Shooting Games\Clay Pigeon Shooting Games\bin\Windows\x86\Debug\Content\soundEffect\Victory.xnb

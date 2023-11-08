@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <SourceFile>C:/Users/kinglingmk1/source/repos/Clay Pigeon Shooting Games/Clay Pigeon Shooting Games/Content/soundEffect/Round3.mp3</SourceFile>
+  <SourceTime>2023-11-08T10:45:49.3175484+08:00</SourceTime>
+  <DestFile>C:/Users/kinglingmk1/source/repos/Clay Pigeon Shooting Games/Clay Pigeon Shooting Games/Content/bin/Windows/Content/soundEffect/Round3.xnb</DestFile>
+  <DestTime>2023-11-08T14:52:06.3476851+08:00</DestTime>
+  <Importer>Mp3Importer</Importer>
+  <ImporterTime>2018-09-24T05:55:52+08:00</ImporterTime>
+  <Processor>SoundEffectProcessor</Processor>
+  <ProcessorTime>2018-09-24T05:55:52+08:00</ProcessorTime>
+  <Parameters>
+    <Key>Quality</Key>
+    <Value>Best</Value>
+  </Parameters>
+  <Dependencies />
+  <BuildAsset />
+  <BuildOutput />
+</PipelineBuildEvent>

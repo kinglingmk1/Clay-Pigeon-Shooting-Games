@@ -116,9 +116,39 @@
 /processorParam:Quality=Best
 /build:soundEffect/GunSound.mp3
 
+#begin soundEffect/Lost.mp3
+/importer:Mp3Importer
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:soundEffect/Lost.mp3
+
 #begin soundEffect/PadDestroySound.mp3
 /importer:Mp3Importer
 /processor:SoundEffectProcessor
 /processorParam:Quality=Best
 /build:soundEffect/PadDestroySound.mp3
+
+#begin soundEffect/Round1.mp3
+/importer:Mp3Importer
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:soundEffect/Round1.mp3
+
+#begin soundEffect/Round2.mp3
+/importer:Mp3Importer
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:soundEffect/Round2.mp3
+
+#begin soundEffect/Round3.mp3
+/importer:Mp3Importer
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:soundEffect/Round3.mp3
+
+#begin soundEffect/Victory.mp3
+/importer:Mp3Importer
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:soundEffect/Victory.mp3
 
