@@ -31,14 +31,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Clay Pigeon Shooting Games.exe" size="164872">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Clay Pigeon Shooting Games.exe" size="165384">
       <assemblyIdentity name="Clay Pigeon Shooting Games" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>fQ/DprREdC2VZutZuyrShbaizajlGJkX5Hr+bmW47eI=</dsig:DigestValue>
+        <dsig:DigestValue>XKVZugoaENL/t4ZSbqBsg3LRctDAhU4VYJGpKil0iyg=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

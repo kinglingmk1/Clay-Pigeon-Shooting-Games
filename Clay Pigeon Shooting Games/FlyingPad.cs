@@ -74,6 +74,28 @@ namespace Clay_Pigeon_Shooting_Games
             targetPosition.Y = mouseState.Y - (mousePoint.Height / 2);
             targetMiddlllePosition.X = mouseState.X - (mouseMiddlePoint.Width / 2);
             targetMiddlllePosition.Y = mouseState.Y - (mouseMiddlePoint.Height / 2);
+
+            if(mouseState.Y > GraphicsDevice.Viewport.Height)
+            {
+                targetPosition.Y = GraphicsDevice.Viewport.Height - (mousePoint.Height / 2);
+                targetMiddlllePosition.Y = GraphicsDevice.Viewport.Height - (mousePoint.Height / 2);
+            }
+            if (mouseState.X > GraphicsDevice.Viewport.Width)
+            {
+                targetPosition.X = GraphicsDevice.Viewport.Width - (mousePoint.Width / 2);
+                targetMiddlllePosition.X = GraphicsDevice.Viewport.Width - (mousePoint.Width / 2);
+            }
+            if(mouseState.Y < 0)
+            {
+                targetPosition.Y = 0 - (mousePoint.Height / 2);
+                targetMiddlllePosition.Y = 0 - (mousePoint.Height / 2);
+            }
+            if (mouseState.X < 0)
+            {
+                targetPosition.X = 0 - (mousePoint.Width / 2);
+                targetMiddlllePosition.X = 0 - (mousePoint.Width / 2);
+            }
+
             flyingPadsRectangle = new Rectangle((int)position.X - 50, (int)position.Y -50, FlyingPads.Width, FlyingPads.Height);
             flyingPads2Rectangle = new Rectangle((int)position2.X - 50, (int)position2.Y - 50, FlyingPads2.Width, FlyingPads2.Height);
             mouseMiddleRectangle = new Rectangle((int)targetMiddlllePosition.X, (int)targetMiddlllePosition.Y, mouseMiddlePoint.Width, mouseMiddlePoint.Height);
