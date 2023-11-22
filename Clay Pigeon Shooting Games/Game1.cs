@@ -35,6 +35,7 @@ namespace Clay_Pigeon_Shooting_Games
         public bool playonce = true;
         public int bulletHoleCount = 0;
         public int MaxBulletHole = 1000;
+        public bool start = false;
 
         public Game1()
         {
@@ -112,20 +113,6 @@ namespace Clay_Pigeon_Shooting_Games
         {
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
-            // TODO: Add your update logic here
-            if (Keyboard.GetState().IsKeyDown(Keys.R) && (miss >= misslimit || score>=30)) //Press R reset game
-            {
-                BulletHolePosition = new Vector2[MaxBulletHole];
-                playonce = true;
-                round1[0].CreateInstance().Play();
-                miss = 0;
-                padNumner = 3;
-                stage = 1;
-                FP.score = 0;
-                scoreMax = 10;
-                score = 0;
-                misslimit = 10;
-            }
             MouseState mouseState = Mouse.GetState();
             if (mouseState.LeftButton == ButtonState.Pressed && mouseLastState.LeftButton == ButtonState.Released) // Left Click 當按下左鍵并且當前上一階段左鍵是放開
             {
@@ -140,77 +127,96 @@ namespace Clay_Pigeon_Shooting_Games
                         bulletHoleCount = 0;
                     }
                     GunSound[0].CreateInstance().Play(); //Gun Sound Play 播放槍聲
-                    //if collision score = 1 * stage + scores
+                                                         //if collision score = 1 * stage + scores
                 }
             }
             mouseLastState = mouseState; //Record the last statement of mouse 記錄最後滑鼠狀態
-            for (int i=0; i< FlyingPads.Length; i++)
+            if (start || Keyboard.GetState().IsKeyDown(Keys.Space))
             {
-                if (FlyingPads[i].position.X > 1000) //Out of range then count to miss
+                start = true;
+                // TODO: Add your update logic here
+                if (Keyboard.GetState().IsKeyDown(Keys.R) && (miss >= misslimit || score >= 30)) //Press R reset game
                 {
-                    miss++;
-                    FlyingPads[i].Initialize();
+                    BulletHolePosition = new Vector2[MaxBulletHole];
+                    playonce = true;
+                    round1[0].CreateInstance().Play();
+                    miss = 0;
+                    padNumner = 3;
+                    stage = 1;
+                    FP.score = 0;
+                    scoreMax = 10;
+                    score = 0;
+                    misslimit = 10;
                 }
-                if (FlyingPads[i].fCollision == true)
+                
+                for (int i = 0; i < FlyingPads.Length; i++)
                 {
-                    if (GFire.currentFrame == 0) //Limit Gun short 限制瘋狂射擊
+                    if (FlyingPads[i].position.X > 1000) //Out of range then count to miss
                     {
-                        if (miss < 10 || (stage == 3 && miss < 15)) 
+                        miss++;
+                        FlyingPads[i].Initialize();
+                    }
+                    if (FlyingPads[i].fCollision == true)
+                    {
+                        if (GFire.currentFrame == 0) //Limit Gun short 限制瘋狂射擊
                         {
-                            score++;
+                            if (miss < 10 || (stage == 3 && miss < 15))
+                            {
+                                score++;
+                            }
+                            FlyingPads[i].fCollision = false;
+                            FlyingPads[i].score = 0;
+                            //FlyingPads[i].Initialize();
                         }
-                        FlyingPads[i].fCollision = false;
-                        FlyingPads[i].score = 0;
-                        //FlyingPads[i].Initialize();
                     }
                 }
-            }
-            if (score >= scoreMax && stage == 3)
-            {
-                victory[0].CreateInstance().Play();
-                score = 30;
-                stage++;
-                FlyingPads = new FlyingPad[padNumner + stage]; //Flying Pads numbers 飛碟數量
-                for (int i = 0; i < FlyingPads.Length; i++)
+                if (score >= scoreMax && stage == 3)
                 {
-                    FlyingPads[i] = new FlyingPad(this);
-                    Components.Add(FlyingPads[i]);
+                    victory[0].CreateInstance().Play();
+                    score = 30;
+                    stage++;
+                    FlyingPads = new FlyingPad[padNumner + stage]; //Flying Pads numbers 飛碟數量
+                    for (int i = 0; i < FlyingPads.Length; i++)
+                    {
+                        FlyingPads[i] = new FlyingPad(this);
+                        Components.Add(FlyingPads[i]);
+                    }
                 }
-            }
-            if (miss >= misslimit && playonce == true)
-            {
-                playonce = false;
-                lose[0].CreateInstance().Play();
-            }
-            if (score>= scoreMax && stage == 2)
-            {
-                round2[0].CreateInstance().Play();
-                //MediaPlayer.Play(finalRound);
-                miss = 0;
-                score = 0;
-                scoreMax = 30;
-                misslimit = 15;
-                stage++;
-                FlyingPads = new FlyingPad[padNumner + stage]; //Flying Pads numbers 飛碟數量
-                for (int i = 0; i < FlyingPads.Length; i++)
+                if (miss >= misslimit && playonce == true)
                 {
-                    FlyingPads[i] = new FlyingPad(this);
-                    Components.Add(FlyingPads[i]);
+                    playonce = false;
+                    lose[0].CreateInstance().Play();
                 }
-            }
-            if (score >= scoreMax && stage == 1)
-            {
-                finalRound[0].CreateInstance().Play();
-                //MediaPlayer.Play(round2);
-                miss = 0;
-                score = 0;
-                scoreMax = 20;
-                stage++;
-                FlyingPads = new FlyingPad[padNumner + stage]; //Flying Pads numbers 飛碟數量
-                for (int i = 0; i < FlyingPads.Length; i++)
+                if (score >= scoreMax && stage == 2)
                 {
-                    FlyingPads[i] = new FlyingPad(this);
-                    Components.Add(FlyingPads[i]);
+                    round2[0].CreateInstance().Play();
+                    //MediaPlayer.Play(finalRound);
+                    miss = 0;
+                    score = 0;
+                    scoreMax = 30;
+                    misslimit = 15;
+                    stage++;
+                    FlyingPads = new FlyingPad[padNumner + stage]; //Flying Pads numbers 飛碟數量
+                    for (int i = 0; i < FlyingPads.Length; i++)
+                    {
+                        FlyingPads[i] = new FlyingPad(this);
+                        Components.Add(FlyingPads[i]);
+                    }
+                }
+                if (score >= scoreMax && stage == 1)
+                {
+                    finalRound[0].CreateInstance().Play();
+                    //MediaPlayer.Play(round2);
+                    miss = 0;
+                    score = 0;
+                    scoreMax = 20;
+                    stage++;
+                    FlyingPads = new FlyingPad[padNumner + stage]; //Flying Pads numbers 飛碟數量
+                    for (int i = 0; i < FlyingPads.Length; i++)
+                    {
+                        FlyingPads[i] = new FlyingPad(this);
+                        Components.Add(FlyingPads[i]);
+                    }
                 }
             }
             base.Update(gameTime);
@@ -229,7 +235,7 @@ namespace Clay_Pigeon_Shooting_Games
             spriteBatch.Draw(gameBackground, Vector2.Zero, Color.White); //Generate background 背景生產
             for(int i=0; i< MaxBulletHole; i++)
             {
-                spriteBatch.Draw(bulletHole, BulletHolePosition[i], Color.White);
+                spriteBatch.Draw(bulletHole, BulletHolePosition[i], Color.White);                
             }
             
             spriteBatch.DrawString(font, "Miss: " + miss + "/" + misslimit, new Vector2(20, GraphicsDevice.Viewport.Height - 50), Color.White);
@@ -265,6 +271,11 @@ namespace Clay_Pigeon_Shooting_Games
                 {
                     FlyingPads[i].position.X = -100;
                 }
+            }
+            if (!start)
+            {
+                spriteBatch.DrawString(font, "Clay Pigeon Shooting Games", new Vector2(GraphicsDevice.Viewport.Width / 2, GraphicsDevice.Viewport.Height / 3), Color.Black);
+                spriteBatch.DrawString(font, "Press Space to start the game", new Vector2(GraphicsDevice.Viewport.Width / 2, GraphicsDevice.Viewport.Height / 2), Color.Black);
             }
             spriteBatch.End();
             base.Draw(gameTime);
