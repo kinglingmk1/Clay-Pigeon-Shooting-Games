@@ -36,6 +36,7 @@ namespace Clay_Pigeon_Shooting_Games
         public int bulletHoleCount = 0;
         public int MaxBulletHole = 1000;
         public bool start = false;
+        public bool round1Start = false;
 
         public Game1()
         {
@@ -92,7 +93,6 @@ namespace Clay_Pigeon_Shooting_Games
             finalRound.Add(Content.Load<SoundEffect>("soundEffect\\Round3"));
             victory.Add(Content.Load<SoundEffect>("soundEffect\\Victory"));
             lose.Add(Content.Load<SoundEffect>("soundEffect\\Lost"));
-            round1[0].CreateInstance().Play();
         }
 
         /// <summary>
@@ -133,13 +133,18 @@ namespace Clay_Pigeon_Shooting_Games
             mouseLastState = mouseState; //Record the last statement of mouse 記錄最後滑鼠狀態
             if (start || Keyboard.GetState().IsKeyDown(Keys.Space))
             {
+                if(round1Start == false)
+                {
+                    round1[0].CreateInstance().Play();
+                    round1Start = true;
+                }
+                
                 start = true;
                 // TODO: Add your update logic here
                 if (Keyboard.GetState().IsKeyDown(Keys.R) && (miss >= misslimit || score >= 30)) //Press R reset game
                 {
                     BulletHolePosition = new Vector2[MaxBulletHole];
                     playonce = true;
-                    round1[0].CreateInstance().Play();
                     miss = 0;
                     padNumner = 3;
                     stage = 1;
@@ -147,6 +152,7 @@ namespace Clay_Pigeon_Shooting_Games
                     scoreMax = 10;
                     score = 0;
                     misslimit = 10;
+                    round1Start = false;
                 }
                 
                 for (int i = 0; i < FlyingPads.Length; i++)
